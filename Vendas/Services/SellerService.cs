@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Vendas.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Vendas.Services
 {
@@ -28,7 +29,7 @@ namespace Vendas.Services
 
         public Seller FindById(int id)
         {
-            return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+            return _context.Seller.Include(x => x.Departament).FirstOrDefault(obj => obj.Id == id); // Include(EAGER LOADING) faz join das tabelas
         }
 
         public void Remove(int id)
