@@ -53,11 +53,12 @@ namespace Vendas
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             var enUs = new CultureInfo("en-Us");
+            var ptBR = new CultureInfo("pt-BR");
             var localizationOptions = new RequestLocalizationOptions
             {
                 DefaultRequestCulture = new RequestCulture(enUs),
-                SupportedCultures = new List<CultureInfo> { enUs },
-                SupportedUICultures = new List<CultureInfo> { enUs }
+                SupportedCultures = new List<CultureInfo> { enUs, ptBR },
+                SupportedUICultures = new List<CultureInfo> { enUs, ptBR }
             };
 
             app.UseRequestLocalization(localizationOptions);
